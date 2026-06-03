@@ -1,0 +1,32 @@
+# --- Python ---
+ee-venv/
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# --- KiCad (added in Phase 2-3) ---
+*-backups/
+*.kicad_pcb-bak
+*.kicad_sch-bak
+*.bak
+fp-info-cache
+*.lck
+_autosave-*
+
+# --- STM32 / CubeIDE build output (added in Phase 5) ---
+Debug/
+Release/
+*.o
+*.d
+*.elf
+*.map
+*.list
+
+# --- OS / editor cruft ---
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
