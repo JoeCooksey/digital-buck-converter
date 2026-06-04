@@ -1,0 +1,26 @@
+LTspice 26.0.1 for Windows
+Circuit: C:\Users\joe43\Documents\buckConverterProject\Phase1\buckConverter.net
+Start Time: Thu Jun  4 15:09:21 2026
+
+.step ton=3e-06
+solver = Normal
+Maximum thread count: 24
+tnom = 27
+temp = 27
+method = trap
+Direct Newton iteration succeeded in finding operating point.
+
+.step ton=4.17e-06
+Direct Newton iteration succeeded in finding operating point.
+
+.step ton=4.5e-06
+Direct Newton iteration succeeded in finding operating point.
+
+.step ton=5e-06
+Direct Newton iteration succeeded in finding operating point.
+Total elapsed time: 0.848 seconds.
+
+Files loaded:
+C:\Users\joe43\Documents\buckConverterProject\Phase1\buckConverter.net
+C:\Users\joe43\AppData\Local\LTspice\lib\cmp\standard.dio
+

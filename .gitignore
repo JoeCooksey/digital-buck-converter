@@ -7,6 +7,13 @@ __pycache__/
 *.egg-info/
 .ipynb_checkpoints/
 
+# --- LTspice (Phase 1) ---
+# Waveform dumps are regenerable from the .asc — keep schematic + log + plots.
+*.raw
+*.op.raw
+*.net
+*.fft
+
 # --- KiCad (added in Phase 2-3) ---
 *-backups/
 *.kicad_pcb-bak
