@@ -58,7 +58,15 @@ Built the open-loop power stage in **LTspice** ([`Phase1/idealBuckConverter/buck
 | Inductor ripple | ~0.9 A (30 %) | **≈ 0.95 A** (2.30→3.25 A) | ✅ |
 | Startup ring | `f₀ ≈ 4.2 kHz` | rings at ~`f₀`, ~30 % overshoot, settles ~0.8 ms | ✅ matches `G_vd(s)` |
 
+**Output voltage** — startup overshoots to ~6.1 V, rings down, settles to a regulated DC by ~0.8 ms; zoomed steady state shows the ~45 mV ripple:
+
 ![Startup transient](Phase1/idealBuckConverter/outputVoltageForOpenLoopBuckConverter.png)
+![Steady-state output ripple](Phase1/idealBuckConverter/outputVoltageRippleAfterSteadyState.png)
+
+**Inductor current `I(L1)`** — a current-mode inrush peak of ~6.1 A at startup decays into the steady-state triangular ripple band (~2.30 → 3.25 A, ΔI ≈ 0.95 A) by ~0.4 ms:
+
+![Inductor current — full transient](Phase1/idealBuckConverter/inductorCurrentPlot.png)
+![Inductor current — steady-state ripple](Phase1/idealBuckConverter/inductorCurrentPlotZoomedIn.png)
 
 **The interesting finding — open-loop DC error.** At the *ideal* duty `D = V_out/V_in = 0.417`, V_out settles to only **~4.62 V**, not 5.0 V. The Schottky drop (~0.4 V) plus switch/L/C series resistance mean real hardware needs a **higher** duty. The sweep quantifies it — a true 5 V open-loop wants **D ≈ 0.45**:
 
@@ -68,6 +76,11 @@ Built the open-loop power stage in **LTspice** ([`Phase1/idealBuckConverter/buck
 | 4.17 µs | 0.417 | ≈ 4.62 V |
 | 4.5 µs | 0.45 | ≈ 4.97 V |
 | 5.0 µs | 0.50 | ≈ 5.58 V |
+
+The full `.step` sweep (each trace a different on-time) — and the same traces zoomed to steady state — show V_out tracking duty monotonically, with the LC overshoot growing as D rises:
+
+![Duty sweep — full transient](Phase1/idealBuckConverter/dutyCyclePlot.png)
+![Duty sweep — settled output](Phase1/idealBuckConverter/settledDutyCyclePlot.png)
 
 **Key takeaway:** ripple targets are met, and the underdamped startup ring is the **same `f₀` double-pole** the Phase 0 model predicted — theory and sim agree in the time domain. The DC offset between ideal and required duty is precisely the error the digital loop will null out in Phase 5. Full write-up: [`docs/devlog/2026-06-04-phase1-open-loop-sim.md`](docs/devlog/2026-06-04-phase1-open-loop-sim.md).
 
