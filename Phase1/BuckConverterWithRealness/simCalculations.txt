@@ -1,0 +1,5 @@
+vout_avg: AVG(V(vout) )=5.03391859631 FROM 0.0015 TO 0.002 
+iout_avg: AVG(I(R1) )=3.01974720889 FROM 0.0015 TO 0.002 
+pout_avg: AVG((V(vout)*I(R1)) )=15.2012459016 FROM 0.0015 TO 0.002 
+pin_avg: AVG((-V(vin)*I(V1)) )=16.2344992465 FROM 0.0015 TO 0.002 
+eff: 100*Pout_avg/Pin_avg=93.6354467779

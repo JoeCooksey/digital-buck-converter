@@ -1,0 +1,20 @@
+LTspice 26.0.1 for Windows
+Circuit: C:\Users\joe43\Documents\buckConverterProject\Phase1\BuckConverterWithRealness\buckConverterRealness.net
+Start Time: Sat Jun  6 15:41:34 2026
+solver = Normal
+Maximum thread count: 24
+tnom = 27
+temp = 27
+method = trap
+Direct Newton iteration succeeded in finding operating point.
+Total elapsed time: 0.445 seconds.
+
+Files loaded:
+C:\Users\joe43\Documents\buckConverterProject\Phase1\BuckConverterWithRealness\buckConverterRealness.net
+C:\Users\joe43\AppData\Local\LTspice\lib\cmp\standard.mos
+
+vout_avg: AVG(V(vout) )=5.03391859631 FROM 0.0015 TO 0.002
+iout_avg: AVG(I(R1) )=3.01974720889 FROM 0.0015 TO 0.002
+pout_avg: AVG((V(vout)*I(R1)) )=15.2012459016 FROM 0.0015 TO 0.002
+pin_avg: AVG((-V(vin)*I(V1)) )=16.2344992465 FROM 0.0015 TO 0.002
+eff: 100*Pout_avg/Pin_avg=93.6354467779

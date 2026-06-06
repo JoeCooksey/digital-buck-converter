@@ -84,6 +84,20 @@ The full `.step` sweep (each trace a different on-time) — and the same traces 
 
 **Key takeaway:** ripple targets are met, and the underdamped startup ring is the **same `f₀` double-pole** the Phase 0 model predicted — theory and sim agree in the time domain. The DC offset between ideal and required duty is precisely the error the digital loop will null out in Phase 5. Full write-up: [`docs/devlog/2026-06-04-phase1-open-loop-sim.md`](docs/devlog/2026-06-04-phase1-open-loop-sim.md).
 
+### Synchronous upgrade — realistic power stage
+
+Refined the Phase 1 stage from the ideal switch + Schottky diode into a **true synchronous buck** — high-side **and** low-side N-channel MOSFETs with gate-drive **dead time** (no shoot-through), plus **inductor DCR** and **capacitor ESR** for a believable loss budget ([`Phase1/BuckConverterWithRealness/`](Phase1/BuckConverterWithRealness/)). At `D ≈ 43 %` the `.meas` window reports **5.03 V / 3.02 A** out at **93.6 % efficiency**:
+
+| Metric | Result |
+|---|---:|
+| Average output voltage | 5.0339 V |
+| Average output current | 3.0197 A |
+| Output power | 15.201 W |
+| Input power | 16.234 W |
+| Simulated efficiency | 93.64 % |
+
+Replacing the freewheel diode with a low-side FET is the dominant efficiency win. Full breakdown — schematic, gate-drive/dead-time timing, switch-node and ripple waveforms, and caveats — in [`Phase1/BuckConverterWithRealness/README.md`](Phase1/BuckConverterWithRealness/README.md).
+
 ## Build roadmap
 
 | Phase | What | Status |
