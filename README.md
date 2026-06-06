@@ -86,7 +86,15 @@ The full `.step` sweep (each trace a different on-time) — and the same traces 
 
 ### Synchronous upgrade — realistic power stage
 
-Refined the Phase 1 stage from the ideal switch + Schottky diode into a **true synchronous buck** — high-side **and** low-side N-channel MOSFETs with gate-drive **dead time** (no shoot-through), plus **inductor DCR** and **capacitor ESR** for a believable loss budget ([`Phase1/BuckConverterWithRealness/`](Phase1/BuckConverterWithRealness/)). At `D ≈ 43 %` the `.meas` window reports **5.03 V / 3.02 A** out at **93.6 % efficiency**:
+Refined the Phase 1 stage from the ideal switch + Schottky diode into a **true synchronous buck** — high-side **and** low-side N-channel MOSFETs with gate-drive **dead time** (no shoot-through), plus **inductor DCR** and **capacitor ESR** for a believable loss budget ([`Phase1/BuckConverterWithRealness/`](Phase1/BuckConverterWithRealness/)).
+
+![Synchronous buck schematic](Phase1/BuckConverterWithRealness/BuckConverterWithRealness.png)
+
+The two MOSFETs are driven by independent PWM sources staggered with a **~200 ns dead band** so they never conduct simultaneously:
+
+![Gate-drive timing with dead time](Phase1/BuckConverterWithRealness/GateDriveWithDeadTime.png)
+
+At `D ≈ 43 %` the `.meas` window reports **5.03 V / 3.02 A** out at **93.6 % efficiency**:
 
 | Metric | Result |
 |---|---:|
